@@ -140,3 +140,30 @@ HAVING avg_score > 430;
 -- Return Unique list of all countries
 SELECT DISTINCT country
 FROM customers;
+
+/* ==============================================================================
+   LIMIT
+=============================================================================== */
+
+-- Retrieve only 3 Customers
+SELECT *
+FROM customers
+LIMIT 3;
+
+-- Retrieve the Top 3 Customers with the Highest Scores
+SELECT *
+FROM customers
+ORDER BY score DESC
+LIMIT 3;
+
+-- Retrieve the Lowest 2 Customers based on the score
+SELECT *
+FROM customers
+ORDER BY score
+LIMIT 2;
+
+-- Get the Two Most Recent Orders
+SELECT *
+FROM orders
+ORDER BY order_date DESC
+LIMIT 2;
