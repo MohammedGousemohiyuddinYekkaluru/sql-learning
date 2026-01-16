@@ -19,3 +19,15 @@ CREATE TABLE persons (
     PRIMARY KEY (id)
 );
 SELECT * FROM persons;
+
+/* ============================================================================== 
+   ALTER
+=============================================================================== */
+
+-- Add a new column called email to the persons table
+ALTER TABLE persons
+ADD email VARCHAR(50) NOT NULL;
+
+-- Remove the column phone from the persons table
+ALTER TABLE persons
+DROP COLUMN phone;
