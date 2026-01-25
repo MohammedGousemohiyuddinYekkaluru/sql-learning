@@ -139,6 +139,39 @@ LEFT JOIN orders AS o
 ON c.id = o.customer_id
 WHERE o.customer_id IS NOT NULL;
 
+-- FULL ANTI JOIN
+/* Find customers without orders and orders without customers */
+SELECT
+    c.id,
+    c.first_name,
+    o.order_id,
+    o.customer_id,
+    o.sales
+FROM customers AS c 
+LEFT JOIN orders AS o 
+ON c.id = o.customer_id
+WHERE o.customer_id IS NULL
+
+UNION
+
+SELECT
+    c.id,
+    c.first_name,
+    o.order_id,
+    o.customer_id,
+    o.sales
+FROM customers AS c 
+RIGHT JOIN orders AS o 
+ON c.id = o.customer_id
+WHERE c.id IS NULL;
+
+-- CROSS JOIN
+/* Generate all possible combinations of customers and orders */
+SELECT *
+FROM customers
+CROSS JOIN orders;
+
+
 
 
 
