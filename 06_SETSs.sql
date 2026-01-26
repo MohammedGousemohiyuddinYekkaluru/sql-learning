@@ -83,3 +83,34 @@ SELECT
     LastName,
     FirstName
 FROM Salesdb.Employees;
+
+/* ==============================================================================
+   SETS: UNION, UNION ALL, EXCEPT, INTERSECT
+===============================================================================*/
+
+/* TASK 1: 
+   Combine the data from Employees and Customers into one table using UNION 
+*/
+
+SELECT
+    FirstName,
+    LastName
+FROM Salesdb.Customers
+UNION
+SELECT
+    FirstName,
+    LastName
+FROM Salesdb.Employees;
+
+/* TASK 2: 
+   Combine the data from Employees and Customers into one table, including duplicates, using UNION ALL 
+*/
+SELECT
+    FirstName,
+    LastName
+FROM Salesdb.Customers
+UNION ALL
+SELECT
+    FirstName,
+    LastName
+FROM Salesdb.Employees;
