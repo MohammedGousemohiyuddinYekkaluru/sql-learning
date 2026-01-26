@@ -127,3 +127,50 @@ LEFT JOIN Salesdb.Customers c
    AND e.LastName = c.LastName
 WHERE c.FirstName IS NULL;
 
+/* TASK 4: 
+   Find employees who are also customers using INTERSECT or INNER JOIN
+*/
+SELECT DISTINCT
+    e.FirstName,
+    e.LastName
+FROM Salesdb.Employees e
+INNER JOIN Salesdb.Customers c
+    ON e.FirstName = c.FirstName
+   AND e.LastName = c.LastName;
+   
+/* TASK 5: 
+   Combine order data from Orders and OrdersArchive into one report without duplicates 
+*/
+SELECT
+    'Orders' AS SourceTable,
+    OrderID,
+    ProductID,
+    CustomerID,
+    SalesPersonID,
+    OrderDate,
+    ShipDate,
+    OrderStatus,
+    ShipAddress,
+    BillAddress,
+    Quantity,
+    Sales,
+    CreationTime
+FROM Salesdb.Orders
+UNION
+SELECT
+    'OrdersArchive' AS SourceTable,
+    OrderID,
+    ProductID,
+    CustomerID,
+    SalesPersonID,
+    OrderDate,
+    ShipDate,
+    OrderStatus,
+    ShipAddress,
+    BillAddress,
+    Quantity,
+    Sales,
+    CreationTime
+FROM Salesdb.OrdersArchive
+ORDER BY OrderID;
+
