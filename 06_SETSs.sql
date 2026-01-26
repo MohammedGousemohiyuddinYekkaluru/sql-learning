@@ -114,3 +114,16 @@ SELECT
     FirstName,
     LastName
 FROM Salesdb.Employees;
+
+/* TASK 3: 
+   Find employees who are NOT customers using EXCEPT or LEFT JOIN
+*/
+SELECT 
+    e.FirstName,
+    e.LastName
+FROM Salesdb.Employees e
+LEFT JOIN Salesdb.Customers c
+    ON e.FirstName = c.FirstName
+   AND e.LastName = c.LastName
+WHERE c.FirstName IS NULL;
+
