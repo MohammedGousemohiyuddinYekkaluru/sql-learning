@@ -55,3 +55,28 @@ SELECT
 	LENGTH(first_name) - LENGTH(TRIM(first_name)) flag
 FROM customers
 WHERE LENGTH(first_name)  != LENGTH(TRIM(first_name));
+
+/* ============================================================================== 
+   REPLACE() - Replace or Remove old value with new one
+=============================================================================== */
+
+-- Remove dashes (-) from a phone number
+SELECT
+'123-456-7890' AS phone,
+REPLACE('123-456-7890', '-', '/') AS clean_phone;
+
+-- Replace File Extence from txt to csv
+SELECT
+'report.txt' AS old_filename,
+REPLACE('report.txt', '.txt', '.csv') AS new_filename;
+
+/* ============================================================================== 
+   LENGTH() - String Length
+=============================================================================== */
+
+-- Calculate the length of each customer's first name
+SELECT 
+    first_name, 
+    LENGTH(first_name) AS name_length
+FROM customers;
+	
