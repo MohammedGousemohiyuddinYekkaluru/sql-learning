@@ -79,4 +79,40 @@ SELECT
     first_name, 
     LENGTH(first_name) AS name_length
 FROM customers;
+
+/* ============================================================================== 
+   LEFT() & RIGHT() - Substring Extraction
+=============================================================================== */
+
+-- Retrieve the first two characters of each first name
+SELECT 
+    first_name,
+    LEFT(TRIM(first_name), 2) AS first_2_chars
+FROM customers;
+
+-- Retrieve the last two characters of each first name
+SELECT 
+    first_name,
+    RIGHT(TRIM(first_name), 2) AS last_2_chars
+FROM customers;
+
+/* ============================================================================== 
+   SUBSTRING() - Extracting Substrings
+=============================================================================== */
+
+-- Retrieve a list of customers' first names after removing the first character
+SELECT 
+    first_name,
+    SUBSTRING(TRIM(first_name), 2, LENGTH(first_name)) AS trimmed_name
+FROM customers;	
+
+/* ==============================================================================
+   NESTING FUNCTIONS
+===============================================================================*/
+
+-- Nesting
+SELECT
+first_name, 
+UPPER(LOWER(first_name)) AS nesting
+FROM customers;
 	
