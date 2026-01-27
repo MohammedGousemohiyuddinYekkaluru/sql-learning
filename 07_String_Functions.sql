@@ -1,0 +1,57 @@
+/* ============================================================================== 
+   SQL String Functions
+-------------------------------------------------------------------------------
+   This document provides an overview of SQL string functions, which allow 
+   manipulation, transformation, and extraction of text data efficiently.
+
+   Table of Contents:
+     1. Manipulations
+        - CONCAT
+        - LOWER
+        - UPPER
+	- TRIM
+	- REPLACE
+     2. Calculation
+        - LEN
+     3. Substring Extraction
+        - LEFT
+        - RIGHT
+        - SUBSTRING
+=================================================================================
+*/
+
+/* ============================================================================== 
+   CONCAT() - String Concatenation
+=============================================================================== */
+
+-- Concatenate first name and country into one column
+SELECT
+	CONCAT(first_name, " - ", country) AS full_info
+FROM customers;
+
+/* ============================================================================== 
+   LOWER() & UPPER() - Case Transformation
+=============================================================================== */
+
+-- Convert the first name to lowercase
+SELECT
+	LOWER(first_name) AS lower_case_name
+FROM customers;
+
+-- Convert the first name to uppercase
+SELECT
+	UPPER(first_name) AS upper_case_name
+FROM customers;
+
+/* ============================================================================== 
+   TRIM() - Remove White Spaces
+=============================================================================== */
+
+-- Find customers whose first name contains leading or trailing spaces
+SELECT 
+    first_name,
+	LENGTH(first_name) len_name,
+	LENGTH(TRIM(first_name)) len_trim_name,
+	LENGTH(first_name) - LENGTH(TRIM(first_name)) flag
+FROM customers
+WHERE LENGTH(first_name)  != LENGTH(TRIM(first_name));
