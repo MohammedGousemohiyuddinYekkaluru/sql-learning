@@ -63,3 +63,36 @@ SELECT
     Score
 FROM Sales.Customers
 ORDER BY CASE WHEN Score IS NULL THEN 1 ELSE 0 END, Score;
+
+/* ==============================================================================
+   NULLIF - DIVISION BY ZERO
+===============================================================================*/
+
+/* TASK 4: 
+   Find the sales price for each order by dividing sales by quantity.
+   Uses NULLIF to avoid division by zero.
+*/
+SELECT
+    OrderID,
+    Sales,
+    Quantity,
+    Sales / NULLIF(Quantity, 0) AS Price
+FROM Sales.Orders;
+
+/* ==============================================================================
+   IS NULL - IS NOT NULL
+===============================================================================*/
+
+/* TASK 5: 
+   Identify the customers who have no scores 
+*/
+SELECT *
+FROM Sales.Customers
+WHERE Score IS NULL;
+
+/* TASK 6: 
+   Identify the customers who have scores 
+*/
+SELECT *
+FROM Sales.Customers
+WHERE Score IS NOT NULL;
