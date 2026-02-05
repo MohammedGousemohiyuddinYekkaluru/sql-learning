@@ -37,3 +37,19 @@ SELECT
     SUM(Sales) AS Total_Sales
 FROM Sales.Orders
 GROUP BY ProductID;
+
+/* ==============================================================================
+   SQL WINDOW FUNCTIONS | OVER CLAUSE
+===============================================================================*/
+
+/* TASK 3: 
+   Find the total sales across all orders,
+   additionally providing details such as OrderID and OrderDate 
+*/
+SELECT
+    OrderID,
+    OrderDate,
+    ProductID,
+    Sales,
+    SUM(Sales) OVER () AS Total_Sales
+FROM Sales.Orders;
