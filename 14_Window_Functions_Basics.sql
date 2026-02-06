@@ -212,3 +212,17 @@ SELECT
     Sales,
     SUM(SUM(Sales) OVER (PARTITION BY OrderStatus)) OVER (PARTITION BY OrderStatus) AS Total_Sales  -- Invalid nesting
 FROM Sales.Orders;
+
+/* ==============================================================================
+   SQL WINDOW FUNCTIONS | GROUP BY
+===============================================================================*/
+
+/* TASK 12: 
+   Rank customers by their total sales 
+*/
+SELECT
+    CustomerID,
+    SUM(Sales) AS Total_Sales,
+    RANK() OVER (ORDER BY SUM(Sales) DESC) AS Rank_Customers
+FROM Sales.Orders
+GROUP BY CustomerID;
