@@ -86,3 +86,16 @@ SELECT
     SUM(Sales) OVER (PARTITION BY ProductID) AS Sales_By_Product,
     SUM(Sales) OVER (PARTITION BY ProductID, OrderStatus) AS Sales_By_Product_Status
 FROM Sales.Orders;
+
+/* ==============================================================================
+   SQL WINDOW FUNCTIONS | ORDER CLAUSE
+===============================================================================*/
+
+/* TASK 6: 
+   Rank each order by Sales from highest to lowest */
+SELECT
+    OrderID,
+    OrderDate,
+    Sales,
+    RANK() OVER (ORDER BY Sales DESC) AS Rank_Sales
+FROM Sales.Orders;
