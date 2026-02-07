@@ -55,3 +55,31 @@ FROM (
     FROM Sales.OrdersArchive
 ) t
 WHERE CheckDuplicates > 1;
+
+/* ============================================================
+   SQL WINDOW AGGREGATION | SUM
+   ============================================================ */
+
+/* TASK 4:
+   - Find the Total Sales Across All Orders 
+   - Find the Total Sales for Each Product
+*/
+SELECT
+    OrderID,
+    OrderDate,
+    Sales,
+    ProductID,
+    SUM(Sales) OVER () AS TotalSales,
+    SUM(Sales) OVER (PARTITION BY ProductID) AS SalesByProduct
+FROM Sales.Orders;
+
+/* TASK 5:
+   Find the Percentage Contribution of Each Product's Sales to the Total Sales
+*/
+SELECT
+    OrderID,
+    ProductID,
+    Sales,
+    SUM(Sales) OVER () AS TotalSales,
+    ROUND(CAST(Sales AS FLOAT) / SUM(Sales) OVER () * 100, 2) AS PercentageOfTotal
+FROM Sales.Orders;
