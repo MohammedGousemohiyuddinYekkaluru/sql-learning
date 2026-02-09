@@ -37,3 +37,40 @@ SELECT
     OrderID,
     OrderDate
 FROM Sales.Orders;
+
+/* ==============================================================================
+   SUBQUERY | FROM CLAUSE
+===============================================================================*/
+
+/* TASK 1:
+   Find the products that have a price higher than the average price of all products.
+*/
+
+-- Main Query
+SELECT
+*
+FROM (
+    -- Subquery
+    SELECT
+        ProductID,
+        Price,
+        AVG(Price) OVER () AS AvgPrice
+    FROM Sales.Products
+) AS t
+WHERE Price > AvgPrice;
+
+/* TASK 2:
+   Rank Customers based on their total amount of sales.
+*/
+-- Main Query
+SELECT
+    *,
+    RANK() OVER (ORDER BY TotalSales DESC) AS CustomerRank
+FROM (
+    -- Subquery
+    SELECT
+        CustomerID,
+        SUM(Sales) AS TotalSales
+    FROM Sales.Orders
+    GROUP BY CustomerID
+) AS t;
