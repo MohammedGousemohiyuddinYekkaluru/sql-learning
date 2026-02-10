@@ -89,3 +89,58 @@ SELECT
     Price,
     (SELECT COUNT(*) FROM Sales.Orders) AS TotalOrders -- Subquery
 FROM Sales.Products;
+
+/* ==============================================================================
+   SUBQUERY | JOIN CLAUSE
+===============================================================================*/
+
+/* TASK 4:
+   Show customer details along with their total sales.
+*/
+-- Main Query
+SELECT
+    c.*,
+    t.TotalSales
+FROM Sales.Customers AS c
+LEFT JOIN ( 
+    -- Subquery
+    SELECT
+        CustomerID,
+        SUM(Sales) AS TotalSales
+    FROM Sales.Orders
+    GROUP BY CustomerID
+) AS t
+    ON c.CustomerID = t.CustomerID;
+
+/* TASK 5:
+   Show all customer details and the total orders of each customer.
+*/
+-- Main Query
+SELECT
+    c.*,
+    o.TotalOrders
+FROM Sales.Customers AS c
+LEFT JOIN (
+    -- Subquery
+    SELECT
+        CustomerID,
+        COUNT(*) AS TotalOrders
+    FROM Sales.Orders
+    GROUP BY CustomerID
+) AS o
+    ON c.CustomerID = o.CustomerID;
+
+/* ==============================================================================
+   SUBQUERY | COMPARISON OPERATORS
+===============================================================================*/
+
+/* TASK 6:
+   Find the products that have a price higher than the average price of all products.
+*/
+-- Main Query
+SELECT
+    ProductID,
+    Price,
+    (SELECT AVG(Price) FROM Sales.Products) AS AvgPrice -- Subquery
+FROM Sales.Products
+WHERE Price > (SELECT AVG(Price) FROM Sales.Products); -- Subquery
