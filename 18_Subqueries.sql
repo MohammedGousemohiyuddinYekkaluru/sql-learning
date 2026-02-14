@@ -211,3 +211,33 @@ SELECT
      FROM Sales.Orders o
      WHERE o.CustomerID = c.CustomerID) AS TotalSales
 FROM Sales.Customers AS c;
+
+/* ==============================================================================
+   SUBQUERY | EXISTS OPERATOR
+===============================================================================*/
+
+/* TASK 11:
+   Show the details of orders made by customers in Germany.
+*/
+SELECT
+    *
+FROM Sales.Orders AS o
+WHERE EXISTS (
+    SELECT 1
+    FROM Sales.Customers AS c
+    WHERE Country = 'Germany'
+      AND o.CustomerID = c.CustomerID
+);
+
+/* TASK 12:
+   Show the details of orders made by customers not in Germany.
+*/
+SELECT
+    *
+FROM Sales.Orders AS o
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Sales.Customers AS c
+    WHERE Country = 'Germany'
+      AND o.CustomerID = c.CustomerID
+);
