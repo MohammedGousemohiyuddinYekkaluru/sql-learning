@@ -112,3 +112,37 @@ WITH Series AS
 SELECT *
 FROM Series
 OPTION (MAXRECURSION 5000);
+
+/* ==============================================================================
+   RECURSIVE CTE | BUILD HIERARCHY
+===============================================================================*/
+
+/* TASK 4:
+   Build the employee hierarchy by displaying each employee's level within the organization.
+   - Anchor Query: Select employees with no manager.
+   - Recursive Query: Select subordinates and increment the level.
+*/
+WITH CTE_Emp_Hierarchy AS
+(
+    -- Anchor Query: Top-level employees (no manager)
+    SELECT
+        EmployeeID,
+        FirstName,
+        ManagerID,
+        1 AS Level
+    FROM Sales.Employees
+    WHERE ManagerID IS NULL
+    UNION ALL
+    -- Recursive Query: Get subordinate employees and increment level
+    SELECT
+        e.EmployeeID,
+        e.FirstName,
+        e.ManagerID,
+        Level + 1
+    FROM Sales.Employees AS e
+    INNER JOIN CTE_Emp_Hierarchy AS ceh
+        ON e.ManagerID = ceh.EmployeeID
+)
+-- Main Query
+SELECT *
+FROM CTE_Emp_Hierarchy;
