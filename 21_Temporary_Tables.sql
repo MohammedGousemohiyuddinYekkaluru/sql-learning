@@ -19,3 +19,11 @@ FROM Sales.Orders;
 ============================================================================== */
 DELETE FROM #Orders
 WHERE OrderStatus = 'Delivered';
+
+/* ==============================================================================
+   Step 3: Load Cleaned Data into Permanent Table (Sales.OrdersTest)
+============================================================================== */
+SELECT
+    *
+INTO Sales.OrdersTest
+FROM #Orders;
