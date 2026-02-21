@@ -1,0 +1,34 @@
+/* ==============================================================================
+   SQL Stored Procedures
+-------------------------------------------------------------------------------
+   This script shows how to work with stored procedures in SQL Server,
+   starting from basic implementations and advancing to more sophisticated
+   techniques.
+
+   Table of Contents:
+     1. Basics (Creation and Execution)
+     2. Parameters
+     3. Multiple Queries
+     4. Variables
+     5. Control Flow with IF/ELSE
+     6. Error Handling with TRY/CATCH
+=================================================================================
+*/
+
+/* ==============================================================================
+   Basic Stored Procedure
+============================================================================== */
+
+-- Define the Stored Procedure
+CREATE PROCEDURE GetCustomerSummary AS
+BEGIN
+    SELECT
+        COUNT(*) AS TotalCustomers,
+        AVG(Score) AS AvgScore
+    FROM Sales.Customers
+    WHERE Country = 'USA';
+END
+GO
+
+--Execute Stored Procedure
+EXEC GetCustomerSummary;
