@@ -199,3 +199,43 @@ BEGIN
         BEGIN
             PRINT('No NULL Scores found');
         END;
+/* --------------------------------------------------------------------------
+           Generating Reports
+        -------------------------------------------------------------------------- */
+        SELECT
+            @TotalCustomers = COUNT(*),
+            @AvgScore = AVG(Score)
+        FROM Sales.Customers
+        WHERE Country = @Country;
+
+        PRINT('Total Customers from ' + @Country + ':' + CAST(@TotalCustomers AS NVARCHAR));
+        PRINT('Average Score from ' + @Country + ':' + CAST(@AvgScore AS NVARCHAR));
+
+        SELECT
+            COUNT(OrderID) AS TotalOrders,
+            SUM(Sales) AS TotalSales,
+            1/0 AS FaultyCalculation  -- Intentional error for demonstration
+        FROM Sales.Orders AS o
+        JOIN Sales.Customers AS c
+            ON c.CustomerID = o.CustomerID
+        WHERE c.Country = @Country;
+    END TRY
+    BEGIN CATCH
+        /* --------------------------------------------------------------------------
+           Error Handling
+        -------------------------------------------------------------------------- */
+        PRINT('An error occurred.');
+        PRINT('Error Message: ' + ERROR_MESSAGE());
+        PRINT('Error Number: ' + CAST(ERROR_NUMBER() AS NVARCHAR));
+        PRINT('Error Severity: ' + CAST(ERROR_SEVERITY() AS NVARCHAR));
+        PRINT('Error State: ' + CAST(ERROR_STATE() AS NVARCHAR));
+        PRINT('Error Line: ' + CAST(ERROR_LINE() AS NVARCHAR));
+        PRINT('Error Procedure: ' + ISNULL(ERROR_PROCEDURE(), 'N/A'));
+    END CATCH;
+END
+GO
+
+--Execute Stored Procedure
+EXEC GetCustomerSummary @Country = 'Germany';
+EXEC GetCustomerSummary @Country = 'USA';
+EXEC GetCustomerSummary;
