@@ -119,3 +119,56 @@ GO
 EXEC GetCustomerSummary @Country = 'Germany';
 EXEC GetCustomerSummary @Country = 'USA';
 EXEC GetCustomerSummary;
+
+/* ==============================================================================
+   Control Flow IFELSE in Stored Procedure
+============================================================================== */
+
+ALTER PROCEDURE GetCustomerSummary @Country NVARCHAR(50) = 'USA' AS
+BEGIN
+	-- Declare Variables
+	DECLARE @TotalCustomers INT, @AvgScore FLOAT;     
+
+	/* --------------------------------------------------------------------------
+	   Prepare & Cleanup Data
+	-------------------------------------------------------------------------- */
+
+	IF EXISTS (SELECT 1 FROM Sales.Customers WHERE Score IS NULL AND Country = @Country)
+	BEGIN
+		PRINT('Updating NULL Scores to 0');
+		UPDATE Sales.Customers
+		SET Score = 0
+		WHERE Score IS NULL AND Country = @Country;
+	END
+	ELSE
+	BEGIN
+		PRINT('No NULL Scores found');
+	END;
+
+	/* --------------------------------------------------------------------------
+	   Generating Reports
+	-------------------------------------------------------------------------- */
+	SELECT
+		@TotalCustomers = COUNT(*),
+		@AvgScore = AVG(Score)
+	FROM Sales.Customers
+	WHERE Country = @Country;
+
+	PRINT('Total Customers from ' + @Country + ':' + CAST(@TotalCustomers AS NVARCHAR));
+	PRINT('Average Score from ' + @Country + ':' + CAST(@AvgScore AS NVARCHAR));
+
+	SELECT
+		COUNT(OrderID) AS TotalOrders,
+		SUM(Sales) AS TotalSales,
+		1/0 AS FaultyCalculation  -- Intentional error for demonstration
+	FROM Sales.Orders AS o
+	JOIN Sales.Customers AS c
+		ON c.CustomerID = o.CustomerID
+	WHERE c.Country = @Country;
+END
+GO
+
+--Execute Stored Procedure
+EXEC GetCustomerSummary @Country = 'Germany';
+EXEC GetCustomerSummary @Country = 'USA';
+EXEC GetCustomerSummary;
