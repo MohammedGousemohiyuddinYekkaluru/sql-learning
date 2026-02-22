@@ -83,3 +83,39 @@ GO
 EXEC GetCustomerSummary @Country = 'Germany';
 EXEC GetCustomerSummary @Country = 'USA';
 EXEC GetCustomerSummary;
+
+/* ==============================================================================
+   Variables in Stored Procedure
+============================================================================== */
+
+-- Edit the Stored Procedure
+ALTER PROCEDURE GetCustomerSummary @Country NVARCHAR(50) = 'USA' AS
+BEGIN
+    -- Declare Variables
+    DECLARE @TotalCustomers INT, @AvgScore FLOAT;
+                
+    -- Query 1: Find the Total Nr. of Customers and the Average Score
+    SELECT
+		@TotalCustomers = COUNT(*),
+		@AvgScore = AVG(Score)
+    FROM Sales.Customers
+    WHERE Country = @Country;
+
+	PRINT('Total Customers from ' + @Country + ':' + CAST(@TotalCustomers AS NVARCHAR));
+	PRINT('Average Score from ' + @Country + ':' + CAST(@AvgScore AS NVARCHAR));
+
+    -- Query 2: Find the Total Nr. of Orders and Total Sales
+    SELECT
+        COUNT(OrderID) AS TotalOrders,
+        SUM(Sales) AS TotalSales
+    FROM Sales.Orders AS o
+    JOIN Sales.Customers AS c
+        ON c.CustomerID = o.CustomerID
+    WHERE c.Country = @Country;
+END
+GO
+
+--Execute Stored Procedure
+EXEC GetCustomerSummary @Country = 'Germany';
+EXEC GetCustomerSummary @Country = 'USA';
+EXEC GetCustomerSummary;
