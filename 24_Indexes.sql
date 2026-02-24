@@ -76,3 +76,19 @@ SELECT *
 FROM Sales.DBCustomers
 WHERE Score > 500
   AND Country = 'USA';
+  
+/* ==============================================================================
+   Leftmost Prefix Rule Explanation
+-------------------------------------------------------------------------------
+   For a composite index defined on columns (A, B, C, D), the index can be
+   utilized by queries that filter on:
+     - Column A only,
+     - Columns A and B,
+     - Columns A, B, and C.
+   However, queries that filter on:
+     - Column B only,
+     - Columns A and C,
+     - Columns A, B, and D,
+   will not be able to fully utilize the index due to the leftmost prefix rule.
+=================================================================================
+*/
