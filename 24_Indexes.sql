@@ -164,3 +164,41 @@ WHERE Country = 'USA';
 CREATE NONCLUSTERED INDEX idx_Customers_Country
 ON Sales.Customers (Country)
 WHERE Country = 'USA';
+
+/* ==============================================================================
+   Index Monitoring
+-------------------------------------------------------------------------------
+     - List indexes and monitor their usage.
+     - Report missing and duplicate indexes.
+     - Retrieve and update statistics.
+     - Check index fragmentation and perform index maintenance (reorganize/rebuild).
+=================================================================================
+*/
+
+/* ==============================================================================
+   Monitor Index Usage
+============================================================================== */
+
+-- List all indexes on a specific table
+sp_helpindex 'Sales.DBCustomers'
+
+-- Monitor Index Usage
+SELECT 
+	tbl.name AS TableName,
+    idx.name AS IndexName,
+    idx.type_desc AS IndexType,
+    idx.is_primary_key AS IsPrimaryKey,
+    idx.is_unique AS IsUnique,
+    idx.is_disabled AS IsDisabled,
+    s.user_seeks AS UserSeeks,
+    s.user_scans AS UserScans,
+    s.user_lookups AS UserLookups,
+    s.user_updates AS UserUpdates,
+    COALESCE(s.last_user_seek, s.last_user_scan) AS LastUpdate
+FROM sys.indexes idx
+JOIN sys.tables tbl
+    ON idx.object_id = tbl.object_id
+LEFT JOIN sys.dm_db_index_usage_stats s
+    ON s.object_id = idx.object_id
+    AND s.index_id = idx.index_id
+ORDER BY tbl.name, idx.name;
