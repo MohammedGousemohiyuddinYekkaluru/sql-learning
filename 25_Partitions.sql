@@ -51,3 +51,32 @@ ALTER DATABASE SalesDB REMOVE FILEGROUP FG_2023;
 SELECT *
 FROM sys.filegroups
 WHERE type = 'FG'
+
+/* ==============================================================================
+   Step 3: Create Data Files
+============================================================================== */
+
+-- Create Files and map them to Filegroups
+ALTER DATABASE SalesDB ADD FILE
+(
+	NAME = P_2023, -- Logical Name
+	FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\P_2023.ndf'
+) TO FILEGROUP FG_2023;
+
+ALTER DATABASE SalesDB ADD FILE
+(
+	NAME = P_2024, -- Logical Name
+	FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\P_2024.ndf'
+) TO FILEGROUP FG_2024;
+
+ALTER DATABASE SalesDB ADD FILE
+(
+	NAME = P_2025, -- Logical Name
+	FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\P_2025.ndf'
+) TO FILEGROUP FG_2025;
+
+ALTER DATABASE SalesDB ADD FILE
+(
+	NAME = P_2026, -- Logical Name
+	FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\P_2026.ndf'
+) TO FILEGROUP FG_2026;
