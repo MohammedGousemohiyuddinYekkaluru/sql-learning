@@ -112,3 +112,14 @@ FROM sys.partition_schemes ps
 JOIN sys.partition_functions pf ON ps.function_id = pf.function_id
 JOIN sys.destination_data_spaces ds ON ps.data_space_id = ds.partition_scheme_id
 JOIN sys.filegroups fg ON ds.data_space_id = fg.data_space_id
+
+/* ==============================================================================
+   Step 5: Create the Partitioned Table
+============================================================================== */
+
+CREATE TABLE Sales.Orders_Partitioned 
+(
+	OrderID INT,
+	OrderDate DATE,
+	Sales INT
+) ON SchemePartitionByYear (OrderDate)
