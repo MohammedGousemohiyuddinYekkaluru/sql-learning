@@ -345,3 +345,37 @@ FROM Sales.Orders
 GROUP BY MONTH(OrderDate)
 
 SELECT OrderYear, TotalSales FROM Sales.SalesSummary
+
+-- ##############################################################
+-- #                       SUBQUERIES, CTE                      #
+-- ##############################################################
+
+/* ==============================================================================
+   Tip 19: JOIN vs EXISTS vs IN (Avoid using IN)
+===============================================================================*/
+
+-- JOIN (Best Practice: If the Performance equals to EXISTS)
+SELECT o.OrderID, o.Sales
+FROM Sales.Orders AS o
+INNER JOIN Sales.Customers AS c
+    ON o.CustomerID = c.CustomerID
+WHERE c.Country = 'USA';
+
+-- EXISTS (Best Practice: Use it for Large Tables)
+SELECT o.OrderID, o.Sales
+FROM Sales.Orders AS o
+WHERE EXISTS (
+    SELECT 1
+    FROM Sales.Customers AS c
+    WHERE c.CustomerID = o.CustomerID
+      AND c.Country = 'USA'
+);
+
+-- IN (Bad Practice)
+SELECT o.OrderID, o.Sales
+FROM Sales.Orders AS o
+WHERE o.CustomerID IN (
+    SELECT CustomerID
+    FROM Sales.Customers
+    WHERE Country = 'USA'
+);
