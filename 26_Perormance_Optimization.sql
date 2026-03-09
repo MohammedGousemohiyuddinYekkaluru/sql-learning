@@ -434,3 +434,19 @@ CREATE TABLE CustomersInfo (
     CONSTRAINT FK_Bad_Customers_EmployeeID FOREIGN KEY (EmployeeID)
         REFERENCES Sales.Employees(EmployeeID)
 );
+
+-- Good Practice Practice 
+CREATE TABLE CustomersInfo (
+    CustomerID INT PRIMARY KEY CLUSTERED,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Country VARCHAR(50) NOT NULL,
+    TotalPurchases FLOAT,
+    Score INT,
+    BirthDate DATE,
+    EmployeeID INT,
+    CONSTRAINT FK_CustomersInfo_EmployeeID FOREIGN KEY (EmployeeID)
+        REFERENCES Sales.Employees(EmployeeID)
+);
+CREATE NONCLUSTERED INDEX IX_CustomersInfo_EmployeeID
+ON CustomersInfo(EmployeeID);
