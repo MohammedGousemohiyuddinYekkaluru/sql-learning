@@ -420,3 +420,17 @@ Tip 24: Make sure all tables have a CLUSTERED PRIMARY KEY
 Tip 25: Creeate Nonclustered Index on Foreign Key if they are frequently used
 =============================================================================
 */
+
+-- Bad Practice 
+CREATE TABLE CustomersInfo (
+    CustomerID INT,
+    FirstName VARCHAR(MAX),
+    LastName TEXT,
+    Country VARCHAR(255),
+    TotalPurchases FLOAT, 
+    Score VARCHAR(255),
+    BirthDate VARCHAR(255),
+    EmployeeID INT,
+    CONSTRAINT FK_Bad_Customers_EmployeeID FOREIGN KEY (EmployeeID)
+        REFERENCES Sales.Employees(EmployeeID)
+);
