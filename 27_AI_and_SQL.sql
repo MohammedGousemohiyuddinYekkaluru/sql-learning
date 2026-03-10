@@ -100,3 +100,35 @@ LEFT JOIN CTE_Last_Order_Date lod ON ts.CustomerID = lod.CustomerID
 LEFT JOIN  CTE_Total_Discounts_By_Customer td ON ts.CustomerID = td.CustomerID
 WHERE  ts.TotalSales > 0
 ORDER BY  ts.TotalSales DESC
+
+/* ===========================================================================
+   3. Optimize the Performance Query
+============================================================================== 
+
+The following SQL Server query is slow. 
+Do the following:
+	- Propose optimizations to improve its performance.
+	- Provide the improved SQL query.
+	- Explain each improvement to understand the reasoning behind it.
+*/
+-- Query with Bar Performance
+SELECT 
+    o.OrderID,
+    o.CustomerID,
+    c.FirstName AS CustomerFirstName,
+    (SELECT COUNT(o2.OrderID)
+     FROM Sales.Orders o2
+     WHERE o2.CustomerID = c.CustomerID) AS OrderCount
+FROM 
+    Sales.Orders o
+LEFT JOIN 
+    Sales.Customers c ON o.CustomerID = c.CustomerID
+WHERE 
+    LOWER(o.OrderStatus) = 'delivered'
+    OR YEAR(o.OrderDate) = 2025
+    OR o.CustomerID =1 OR o.CustomerID =2 OR o.CustomerID =3
+    OR o.CustomerID IN (
+        SELECT CustomerID
+        FROM Sales.Customers
+        WHERE Country LIKE '%USA%'
+    )
