@@ -28,3 +28,18 @@
     16. Prepare for a SQL Exam
 =================================================================================
 */
+
+/* ==============================================================================
+   1. Solve an SQL Task
+=================================================================================
+
+In my SQL Server database, we have two tables:
+The first table is `orders` with the following columns: order_id, sales, customer_id, product_id.
+The second table is `customers` with the following columns: customer_id, first_name, last_name, country.
+Do the following:
+	- Write a query to rank customers based on their sales.
+	- The result should include the customer's customer_id, full name, country, total sales, and their rank.
+	- Include comments but avoid commenting on obvious parts.
+	- Write three different versions of the query to achieve this task.
+	- Evaluate and explain which version is best in terms of readability and performance
+*/
