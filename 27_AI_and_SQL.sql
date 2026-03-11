@@ -164,3 +164,27 @@ FROM Sales.Customers C
 LEFT JOIN Sales.Orders O 
 ON C.CustomerID = O.CustomerID
 GROUP BY C.CustomerID, C.Country
+
+/* ===========================================================================
+   6. Explain the Result
+============================================================================== 
+
+I didn't understand the result of the following SQL Server query.
+Do the following:
+	- Break down how SQL processes the query step by step.
+	- Explaining each stage and how the result is formed.
+*/
+WITH Series AS (
+	-- Anchor Query
+	SELECT
+	1 AS MyNumber
+	UNION ALL
+	-- Recursive Query
+	SELECT
+	MyNumber + 1
+	FROM Series
+	WHERE MyNumber < 20
+)
+-- Main Query
+SELECT *
+FROM Series
