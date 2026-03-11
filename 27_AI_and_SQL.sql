@@ -143,3 +143,24 @@ Do the following:
 	- Identify performance bottlenecks and issues.
 	- Suggest ways to improve performance and optimize the execution plan.
 */
+
+/* ===========================================================================
+   5. Debugging
+==============================================================================
+
+The following SQL Server Query causing this error: "Msg 8120, Level 16, State 1, Line 5"
+Do the following: 
+	- Explain the error massage.
+	- Find the root cause of the issue.
+	- Suggest how to fix it.
+*/
+
+SELECT 
+    C.CustomerID,
+    C.Country,
+    SUM(O.Sales) AS TotalSales,
+    RANK() OVER (PARTITION BY C.Country ORDER BY O.Sales DESC) AS RankInCountry
+FROM Sales.Customers C
+LEFT JOIN Sales.Orders O 
+ON C.CustomerID = O.CustomerID
+GROUP BY C.CustomerID, C.Country
