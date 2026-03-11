@@ -132,3 +132,14 @@ WHERE
         FROM Sales.Customers
         WHERE Country LIKE '%USA%'
     )
+    
+/* ===========================================================================
+   4. Optimize Execution Plan
+============================================================================== 
+
+The image is the execution plan of SQL Server query.
+Do the following:
+	- Describe the execution plan step by step.
+	- Identify performance bottlenecks and issues.
+	- Suggest ways to improve performance and optimize the execution plan.
+*/
