@@ -188,3 +188,33 @@ WITH Series AS (
 -- Main Query
 SELECT *
 FROM Series
+
+/* ===========================================================================
+   7. Styling & Formatting
+============================================================================== 
+
+The following SQL Server query hard to understand. 
+Do the following:
+	Restyle the code to make it easier to read.
+	Align column aliases.
+	Keep it compact - do not introduce unnecessary new lines.	
+	Ensure the formatting follows best practices.
+*/
+-- Bad Styled Query
+with CTE_Total_Sales as 
+(Select 
+CustomerID, sum(Sales) as TotalSales 
+from Sales.Orders 
+group by CustomerID),
+cte_customer_segments as 
+(SELECT CustomerID, 
+case when TotalSales > 100 then 'High Value' 
+when TotalSales between 50 and 100 then 'Medium Value' 
+else 'Low Value' end as CustomerSegment 
+from CTE_Total_Sales)
+select c.CustomerID, c.FirstName, c.LastName, 
+cts.TotalSales, ccs.CustomerSegment 
+FROM sales.customers c 
+left join CTE_Total_Sales cts 
+ON cts.CustomerID = c.CustomerID 
+left JOIN cte_customer_segments ccs ON ccs.CustomerID = c.CustomerID
