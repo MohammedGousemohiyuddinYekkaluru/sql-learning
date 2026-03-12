@@ -218,3 +218,46 @@ FROM sales.customers c
 left join CTE_Total_Sales cts 
 ON cts.CustomerID = c.CustomerID 
 left JOIN cte_customer_segments ccs ON ccs.CustomerID = c.CustomerID
+
+/* ===========================================================================
+   8. Documentations & Comments
+==============================================================================
+
+The following SQL Server query lacks comments and documentation.
+Do the following:
+	Insert a leading comment at the start of the query describing its overall purpose.
+	Add comments only where clarification is necessary, avoiding obvious statements.
+	Create a separate document explaining the business rules implemented by the query.	
+	Create another separate document describing how the query works.
+*/
+
+WITH CTE_Total_Sales AS 
+(
+SELECT 
+    CustomerID,
+    SUM(Sales) AS TotalSales
+FROM Sales.Orders 
+GROUP BY CustomerID
+),
+CTE_Customer_Segements AS (
+SELECT 
+	CustomerID,
+	CASE 
+		WHEN TotalSales > 100 THEN 'High Value'
+		WHEN TotalSales BETWEEN 50 AND 100 THEN 'Medium Value'
+		ELSE 'Low Value'
+	END CustomerSegment
+FROM CTE_Total_Sales
+)
+
+SELECT 
+c.CustomerID, 
+c.FirstName,
+c.LastName,
+cts.TotalSales,
+ccs.CustomerSegment
+FROM Sales.Customers c
+LEFT JOIN CTE_Total_Sales cts
+ON cts.CustomerID = c.CustomerID
+LEFT JOIN CTE_Customer_Segements ccs
+ON ccs.CustomerID = c.CustomerID 
