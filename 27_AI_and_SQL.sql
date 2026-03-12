@@ -261,3 +261,14 @@ LEFT JOIN CTE_Total_Sales cts
 ON cts.CustomerID = c.CustomerID
 LEFT JOIN CTE_Customer_Segements ccs
 ON ccs.CustomerID = c.CustomerID 
+
+/* ===========================================================================
+   9. Improve Database DDL
+============================================================================== 
+The following SQL Server DDL Script has to be optimized.
+Do the following:
+	- Naming: Check the consistency of table/column names, prefixes, standards.
+	- Data Types: Ensure data types are appropriate and optimized.
+	- Integrity: Verify the integrity of primary keys and foreign keys.	
+	- Indexes: Check that indexes are sufficient and avoid redundancy.
+	- Normalization: Ensure proper normalization and avoid redundancy.
