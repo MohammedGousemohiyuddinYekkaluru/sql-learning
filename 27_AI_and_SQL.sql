@@ -272,3 +272,15 @@ Do the following:
 	- Integrity: Verify the integrity of primary keys and foreign keys.	
 	- Indexes: Check that indexes are sufficient and avoid redundancy.
 	- Normalization: Ensure proper normalization and avoid redundancy.
+    
+==============================================================================
+   10. Generate Test Dataset
+==============================================================================
+
+I need dataset for testing the following SQL Server DDL 
+Do the following:
+	- Generate test dataset as Insert statements.
+	- Dataset should be realstic.
+	- Keep the dataset small.	
+	- Ensure all primary/foreign key relationships are valid (use matching IDs).
+	- Dont introduce any Null values.
