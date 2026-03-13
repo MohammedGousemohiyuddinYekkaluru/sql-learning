@@ -295,3 +295,16 @@ Do the following:
 	- Make it beginner-friendly.
 	- Include topics relevant to data analytics.	
 	- Focus on real-world data analytics use cases and scenarios.
+    
+==============================================================================
+   12. Understand SQL Concept
+==============================================================================
+
+I want detailed explanation about SQL Window Functions.
+Do the following:
+	- Explain what Window Functions are.
+	- Give an analogy.
+	- Describe why we need them and when to use them.	
+	- Explain the syntax.
+	- Provide simple examples.
+	- List the top 3 use cases.
