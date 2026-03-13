@@ -284,3 +284,14 @@ Do the following:
 	- Keep the dataset small.	
 	- Ensure all primary/foreign key relationships are valid (use matching IDs).
 	- Dont introduce any Null values.
+    
+==============================================================================
+   11. Create SQL Course
+============================================================================== 
+
+Create a comprehensive SQL course with a detailed roadmap and agenda.
+Do the following:
+	- Start with SQL fundamentals and advance to complex topics.
+	- Make it beginner-friendly.
+	- Include topics relevant to data analytics.	
+	- Focus on real-world data analytics use cases and scenarios.
