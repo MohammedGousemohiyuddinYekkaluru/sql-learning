@@ -308,3 +308,14 @@ Do the following:
 	- Explain the syntax.
 	- Provide simple examples.
 	- List the top 3 use cases.
+    
+==============================================================================
+   13. Comparing SQL Concepts
+============================================================================== 
+
+I want to understand the differences between SQL Windows and GROUP BY.
+Do the following:
+	- Explain the key differences between the two concepts.
+	- Describe when to use each concept, with examples.
+	- Provide the pros and cons of each concept.	
+	- Summarize the comparison in a clear side-by-side table.
