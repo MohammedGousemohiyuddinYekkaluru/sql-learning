@@ -319,3 +319,15 @@ Do the following:
 	- Describe when to use each concept, with examples.
 	- Provide the pros and cons of each concept.	
 	- Summarize the comparison in a clear side-by-side table.
+
+==============================================================================
+   14. SQL Questions with Options
+==============================================================================
+
+Act as an SQL trainer and help me practice SQL Window Functions.
+Do the following:
+	- Make it interactive Practicing, you provide task and give solution.
+	- Provide a sample dataset.
+	- Give SQL tasks that gradually increase in difficulty.	
+	- Act as an SQL Server and show the results of my queries.
+	- Review my queries, provide feedback, and suggest improvements.
