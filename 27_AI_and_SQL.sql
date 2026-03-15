@@ -331,3 +331,14 @@ Do the following:
 	- Give SQL tasks that gradually increase in difficulty.	
 	- Act as an SQL Server and show the results of my queries.
 	- Review my queries, provide feedback, and suggest improvements.
+
+==============================================================================
+   15. Prepare for a SQL Interview
+==============================================================================
+
+Act as Interviewer and prepare me for a SQL interview.
+Do the following:
+	- Ask common SQL interview questions.
+	- Make it interactive Practicing, you provide question and give answer.
+	- Gradually progress to advanced topics.
+	- Evaluate my answer and give me a feedback.	
