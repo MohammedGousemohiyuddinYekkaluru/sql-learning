@@ -342,3 +342,14 @@ Do the following:
 	- Make it interactive Practicing, you provide question and give answer.
 	- Gradually progress to advanced topics.
 	- Evaluate my answer and give me a feedback.	
+    
+==============================================================================
+   16. Prepare for a SQL Exam
+==============================================================================
+
+Prepare me for a SQL exam
+Do the following:
+	- Ask common SQL interview questions.
+	- Make it interactive Practicing, you provide question and give answer.
+	- Gradually progress to advanced topics.
+	- Evaluate my answer and give me a feedback.
