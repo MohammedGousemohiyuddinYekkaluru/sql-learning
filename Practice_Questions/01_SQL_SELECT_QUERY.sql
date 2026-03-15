@@ -50,3 +50,28 @@ VALUES
 
 SELECT * FROM Products;
 SELECT * FROM Sales;
+
+/*
+============================================================================================
+                                 Filtering & Sorting 
+    Question: Retrieve all products in the 'Electronics' category that cost more than $500. 
+        Sort the results so the most expensive item is at the top.
+============================================================================================
+*/
+
+SELECT *
+FROM Products
+WHERE category = 'Electronics' AND price > 500
+ORDER BY price DESC;
+
+/*
+==================================================================================================
+                                Distinct Data & Aliasing
+    Question: Get a unique list of all store_location values from the Sales table. 
+    Rename the column in your output to Active_Markets.
+==================================================================================================
+*/
+
+SELECT DISTINCT 
+    store_location AS Active_Markets
+FROM Sales;
