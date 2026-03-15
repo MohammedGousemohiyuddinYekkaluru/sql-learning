@@ -75,3 +75,16 @@ ORDER BY price DESC;
 SELECT DISTINCT 
     store_location AS Active_Markets
 FROM Sales;
+
+/*
+==================================================================================================
+                            Basic Aggregation (GROUP BY)
+       Question: For each product_id in the Sales table, calculate the total quantity sold.
+==================================================================================================
+*/
+
+SELECT 
+    product_id,
+    SUM(quantity_sold) AS total_quantity_sold
+FROM Sales
+GROUP BY product_id;
