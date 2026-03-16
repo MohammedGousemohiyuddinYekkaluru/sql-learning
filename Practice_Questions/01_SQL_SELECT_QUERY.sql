@@ -88,3 +88,19 @@ SELECT
     SUM(quantity_sold) AS total_quantity_sold
 FROM Sales
 GROUP BY product_id;
+
+/*
+=========================================================================================================
+                               Filtering Aggregates (HAVING)
+            Question: Which store locations have sold a total of more than 10 items? 
+            Show the location and the total sum, and sort it by the highest volume.
+==========================================================================================================
+*/
+
+SELECT
+    store_location,
+    SUM(quantity_sold) AS total_items_sold
+FROM Sales
+GROUP BY store_location
+HAVING SUM(quantity_sold) > 10
+ORDER BY total_items_sold DESC;
