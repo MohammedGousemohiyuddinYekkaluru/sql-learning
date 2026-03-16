@@ -104,3 +104,21 @@ FROM Sales
 GROUP BY store_location
 HAVING SUM(quantity_sold) > 10
 ORDER BY total_items_sold DESC;
+
+/*
+=================================================================================
+                            "All Together" 
+            Question: Analyze the Products table. 
+        Find the average price of products for each category, 
+   but only include products that have more than 5 items in stock (stock_quantity). 
+Additionally, only show categories where that average price is greater than $100.
+==================================================================================
+*/
+
+SELECT 
+    category,
+    AVG(price) AS avg_price
+FROM Products
+WHERE stock_quantity > 5
+GROUP BY category
+HAVING AVG(price) > 100;
