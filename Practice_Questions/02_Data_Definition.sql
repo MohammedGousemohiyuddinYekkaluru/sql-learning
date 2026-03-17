@@ -29,3 +29,18 @@ CREATE TABLE posts (
     post_date DATETIME,
     PRIMARY KEY (post_id)
 );
+
+/*
+Goal: Your marketing team wants to track user locations.
+Add a column named country to the user_profiles table. Use VARCHAR(50)
+*/
+
+ALTER TABLE user_profiles
+ADD country VARCHAR(50);
+
+/*
+The username in user_profiles is currently VARCHAR(30). Change it to VARCHAR(100) to allow for longer names.
+*/
+
+ALTER TABLE user_profiles
+ALTER COLUMN username VARCHAR(100);
