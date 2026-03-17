@@ -44,3 +44,17 @@ The username in user_profiles is currently VARCHAR(30). Change it to VARCHAR(100
 
 ALTER TABLE user_profiles
 ALTER COLUMN username VARCHAR(100);
+
+/*
+The bio column is no longer needed.
+Remove the bio column from the user_profiles table
+*/
+
+ALTER TABLE user_profiles
+DROP COLUMN bio;
+
+/*
+Write the command to completely delete the posts table you created
+*/
+
+DROP TABLE posts;
