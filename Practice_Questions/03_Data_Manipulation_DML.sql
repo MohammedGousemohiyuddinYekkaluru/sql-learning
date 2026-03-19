@@ -47,3 +47,12 @@ SELECT
 FROM Books
 WHERE times_rented > 20;
 
+/*
+Someone just checked out 'The Great Gatsby'.
+Update the Books table: Change the status to 'Borrowed' and increment the times_rented by 1 for the book with book_id = 1.
+*/
+
+UPDATE Books
+SET status = 'Borrowed',
+    times_rented += 1
+WHERE book_id = 1;
