@@ -23,3 +23,13 @@ CREATE TABLE Books_Archive (
     book_title VARCHAR(100),
     rental_count INT
 );
+
+/*
+A new shipment of books arrived.
+Insert a new book: ID: 4, Title: 'Atomic Habits', Author: 'James Clear'.
+Bonus: Leave the status and times_rented to their default values (don't include them in the INSERT list).
+*/
+
+INSERT INTO Books (book_id, title, author)
+VALUES
+    (4, 'Atomic Habits', 'James Clear');
