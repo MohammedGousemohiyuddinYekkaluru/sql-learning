@@ -33,3 +33,17 @@ Bonus: Leave the status and times_rented to their default values (don't include 
 INSERT INTO Books (book_id, title, author)
 VALUES
     (4, 'Atomic Habits', 'James Clear');
+
+/*
+We need to back up our most popular books.
+Copy the book_id, title, and times_rented from the Books table into the Books_Archive table, but only for books that have been rented more than 20 times.
+*/
+
+INSERT INTO Books_Archive (id, book_title, rental_count)
+SELECT
+    book_id,
+    title,
+    times_rented
+FROM Books
+WHERE times_rented > 20;
+
