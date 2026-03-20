@@ -65,3 +65,13 @@ Update all books that currently have a status of 'Available' and set their times
 UPDATE Books
 SET times_rented = 0
 WHERE status = 'Available';
+
+/*
+Cleanup time.
+Delete the book titled '1984' from the Books table.
+*/
+
+DELETE FROM Books
+WHERE title = '1984';
+
+SELECT * FROM Books;
