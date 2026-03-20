@@ -75,3 +75,9 @@ DELETE FROM Books
 WHERE title = '1984';
 
 SELECT * FROM Books;
+
+/*
+Completely empty the Books_Archive table using the fastest method possible.
+*/
+
+TRUNCATE TABLE Books_Archive;
