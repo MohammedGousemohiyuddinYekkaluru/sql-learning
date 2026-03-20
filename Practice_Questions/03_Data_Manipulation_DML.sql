@@ -56,3 +56,12 @@ UPDATE Books
 SET status = 'Borrowed',
     times_rented += 1
 WHERE book_id = 1;
+
+/*
+We are doing a system reset.
+Update all books that currently have a status of 'Available' and set their times_rented to 0.
+*/
+
+UPDATE Books
+SET times_rented = 0
+WHERE status = 'Available';
