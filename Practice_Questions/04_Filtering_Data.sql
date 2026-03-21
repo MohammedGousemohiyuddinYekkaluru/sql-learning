@@ -22,3 +22,12 @@ Find all books where the book_id is between 3 and 7.
 SELECT *
 FROM Books
 WHERE book_id BETWEEN 3 AND 7;
+
+/*
+The library is doing a "Classic Authors" spotlight.
+Retrieve all books where the author is in this list: 'George Orwell', 'Aldous Huxley', 'F. Scott Fitzgerald'.
+*/
+
+SELECT *
+FROM Books
+WHERE author IN ('George Orwell', 'Aldous Huxley', 'F. Scott Fitzgerald');
