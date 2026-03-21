@@ -14,3 +14,11 @@ Find all books that are currently 'Available' AND have a times_rented greater th
 SELECT * 
 FROM Books
 WHERE status = 'Available' AND times_rented > 40;
+
+/*
+Find all books where the book_id is between 3 and 7.
+*/
+
+SELECT *
+FROM Books
+WHERE book_id BETWEEN 3 AND 7;
