@@ -47,3 +47,11 @@ Find all books where the author has 'son' anywhere in their name (e.g., Daniel K
 SELECT *
 FROM Books
 WHERE author LIKE '%son%';
+
+/*
+Find all books where the title has 'i' as the fifth letter (e.g., '1984' would not, but 'Atomic' would).
+*/
+
+SELECT *
+FROM Books
+WHERE title LIKE '____i%';
