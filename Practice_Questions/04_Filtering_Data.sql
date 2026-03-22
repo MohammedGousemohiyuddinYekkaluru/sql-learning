@@ -31,3 +31,11 @@ Retrieve all books where the author is in this list: 'George Orwell', 'Aldous Hu
 SELECT *
 FROM Books
 WHERE author IN ('George Orwell', 'Aldous Huxley', 'F. Scott Fitzgerald');
+
+/*
+Find all books where the title starts with the word 'The'.
+*/
+
+SELECT *
+FROM Books
+WHERE title LIKE 'The%';
