@@ -39,3 +39,11 @@ Find all books where the title starts with the word 'The'.
 SELECT *
 FROM Books
 WHERE title LIKE 'The%';
+
+/*
+Find all books where the author has 'son' anywhere in their name (e.g., Daniel Kahneman would not match, but a name like "Anderson" would).
+*/
+
+SELECT *
+FROM Books
+WHERE author LIKE '%son%';
