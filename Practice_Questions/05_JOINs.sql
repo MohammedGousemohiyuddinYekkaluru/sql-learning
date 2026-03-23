@@ -55,3 +55,15 @@ SELECT
 FROM Members AS m
 LEFT JOIN Books AS b
 ON b.borrower_id = m.member_id;
+
+/*
+List all books and the member_name of their borrower.
+(Books like "The Hobbit" should show up with NULL for the member name).
+*/
+
+SELECT 
+    b.title,
+    m.member_name
+FROM Books AS b
+RIGHT JOIN Members AS m
+ON b.borrower_id = m.member_id;
