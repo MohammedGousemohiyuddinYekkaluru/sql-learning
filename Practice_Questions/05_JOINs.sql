@@ -31,3 +31,15 @@ VALUES
 
 SELECT * FROM Members;
 SELECT * FROM Books;
+
+/*
+List every book title and the member_name of the person who currently has it.
+(This should only show books that actually have a borrower).
+*/
+
+SELECT 
+    b.title,
+    m.member_name
+FROM Books AS b
+INNER JOIN Members AS m
+ON b.borrower_id = m.member_id;
