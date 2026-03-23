@@ -43,3 +43,15 @@ SELECT
 FROM Books AS b
 INNER JOIN Members AS m
 ON b.borrower_id = m.member_id;
+
+/*
+List all members and the title of any books they have. 
+(Members like Diana and Edward should show up with NULL for the book title).
+*/
+
+SELECT 
+    m.member_name,
+    b.title
+FROM Members AS m
+LEFT JOIN Books AS b
+ON b.borrower_id = m.member_id;
