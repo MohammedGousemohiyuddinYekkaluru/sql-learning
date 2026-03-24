@@ -78,3 +78,19 @@ FROM Members AS m
 LEFT JOIN Books AS B
 ON b.borrower_id = m.member_id
 WHERE b.borrower_id IS NULL;
+
+/*
+Retrieve a complete list of all members and all books, showing matches where they exist and NULL where they don't.
+*/
+
+SELECT *
+FROM Members AS m
+LEFT JOIN Books AS B
+ON m.member_id = b.borrower_id
+
+UNION
+
+SELECT *
+FROM Members AS m
+RIGHT JOIN Books AS B
+ON m.member_id = b.borrower_id;
