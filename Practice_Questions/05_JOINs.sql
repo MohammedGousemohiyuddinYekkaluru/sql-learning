@@ -67,3 +67,14 @@ SELECT
 FROM Books AS b
 RIGHT JOIN Members AS m
 ON b.borrower_id = m.member_id;
+
+/*
+Find only the members who have not borrowed any books.
+*/
+
+SELECT 
+    member_name
+FROM Members AS m
+LEFT JOIN Books AS B
+ON b.borrower_id = m.member_id
+WHERE b.borrower_id IS NULL;
