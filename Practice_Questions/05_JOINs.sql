@@ -62,11 +62,11 @@ List all books and the member_name of their borrower.
 */
 
 SELECT 
-    b.title,
+    b.title, 
     m.member_name
-FROM Books AS b
-RIGHT JOIN Members AS m
-ON b.borrower_id = m.member_id;
+FROM Members AS m
+RIGHT JOIN Books AS b 
+ON m.member_id = b.borrower_id;
 
 /*
 Find only the members who have not borrowed any books.
