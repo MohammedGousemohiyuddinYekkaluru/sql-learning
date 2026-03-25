@@ -34,3 +34,15 @@ UNION
 SELECT
    staff_name
 FROM Staff;
+
+/*
+Combine the names of all Staff and Members into one list, but keep duplicates so we can see if someone holds both roles.
+*/
+
+SELECT
+    member_name
+FROM Members
+UNION ALL
+SELECT
+   staff_name
+FROM Staff;
