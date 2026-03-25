@@ -22,3 +22,15 @@ VALUES
 -- Members: Alice, Bob, Charlie, Diana, Edward
 SELECT member_name FROM Members;
 SELECT staff_name FROM Staff;
+
+/*
+Create a single master list of every person involved with the library (both Staff and Members).
+*/
+
+SELECT
+    member_name
+FROM Members
+UNION
+SELECT
+   staff_name
+FROM Staff;
