@@ -1,0 +1,24 @@
+/* ============================================================================== 
+   DATABASE SETUP: Set Operations (Staff & Members)
+=============================================================================== */
+
+-- 1. Create Staff Table
+CREATE TABLE Staff (
+    staff_id INT PRIMARY KEY,
+    staff_name VARCHAR(100),
+    role VARCHAR(50)
+);
+
+-- 2. Insert Staff Data
+-- Note: 'Alice Johnson' and 'Bob Smith' are in BOTH tables!
+INSERT INTO Staff (staff_id, staff_name, role)
+VALUES 
+    (101, 'Alice Johnson', 'Librarian'),
+    (102, 'Bob Smith', 'Assistant'),
+    (103, 'Peter Parker', 'Archivist'),
+    (104, 'Bruce Wayne', 'Security');
+
+-- 3. Verify the existing Members for comparison
+-- Members: Alice, Bob, Charlie, Diana, Edward
+SELECT member_name FROM Members;
+SELECT staff_name FROM Staff;
