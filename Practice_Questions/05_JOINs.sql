@@ -94,3 +94,19 @@ SELECT *
 FROM Members AS m
 RIGHT JOIN Books AS B
 ON m.member_id = b.borrower_id;
+
+/*
+Find the total number of books currently being borrowed by "Gold" members, 
+but only for those members who have borrowed more than 1 book.
+*/
+
+SELECT 
+    m.member_name,
+    COUNT(b.title) AS total_books
+FROM Members AS m
+LEFT JOIN Books AS b
+ON m.member_id = b.borrower_id
+WHERE m.membership_type = 'Gold'
+GROUP BY m.member_name
+HAVING COUNT(b.title) > 1
+ORDER BY total_books DESC;
