@@ -56,3 +56,17 @@ SELECT
 FROM Members AS m
 INNER JOIN Staff AS s
 ON member_name = staff_name;
+
+/*
+Find the names of Members who are not part of the Staff.
+*/
+
+SELECT * FROM Members;
+SELECT * FROM Staff;
+
+SELECT 
+    m.member_name
+FROM Members AS m
+LEFT JOIN Staff AS s
+ON m.member_name = s.staff_name
+WHERE s.staff_name IS NULL;
