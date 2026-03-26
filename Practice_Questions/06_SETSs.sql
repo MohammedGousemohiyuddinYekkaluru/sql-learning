@@ -57,6 +57,12 @@ FROM Members AS m
 INNER JOIN Staff AS s
 ON member_name = staff_name;
 
+-- Using INTERSECT
+
+SELECT member_name FROM Members
+INTERSECT
+SELECT staff_name FROM Staff;
+
 /*
 Find the names of Members who are not part of the Staff.
 */
