@@ -46,3 +46,13 @@ UNION ALL
 SELECT
    staff_name
 FROM Staff;
+
+/*
+Find the names of people who are both a Library Member and a Staff member.
+*/
+
+SELECT 
+    m.member_name
+FROM Members AS m
+INNER JOIN Staff AS s
+ON member_name = staff_name;
