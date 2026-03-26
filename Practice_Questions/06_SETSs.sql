@@ -76,3 +76,9 @@ FROM Members AS m
 LEFT JOIN Staff AS s
 ON m.member_name = s.staff_name
 WHERE s.staff_name IS NULL;
+
+-- Using EXCEPT
+
+SELECT member_name FROM Members
+EXCEPT
+SELECT staff_name FROM Staff;
