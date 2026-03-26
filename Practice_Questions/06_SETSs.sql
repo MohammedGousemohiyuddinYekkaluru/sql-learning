@@ -82,3 +82,20 @@ WHERE s.staff_name IS NULL;
 SELECT member_name FROM Members
 EXCEPT
 SELECT staff_name FROM Staff;
+
+/*
+Combine both tables into one report.
+Requirement: Add a static column called UserType. For the first part of the union, the value should be 'Library Member'. 
+For the second part, it should be 'Library Staff'.
+Columns: Name, UserType.
+*/
+
+SELECT
+    member_name AS Name,
+    'Library Member' AS UserType
+FROM Members
+UNION
+SELECT 
+    staff_name,
+    'Library Staff'
+FROM Staff;
