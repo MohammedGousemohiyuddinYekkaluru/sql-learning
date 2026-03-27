@@ -16,3 +16,16 @@ Example Output: THE HOBBIT - j.r.r. tolkien
 SELECT 
     CONCAT(UPPER(title), ' - ' , LOWER(author)) AS Book_Info
 FROM Books;
+
+/*
+We have a book with ID 20 that has accidental spaces.
+Select the title from book 20.
+Show the length of the title before trimming and the length after trimming.
+*/
+
+SELECT
+    title,
+    LEN(title) AS before_trim,
+    LEN(TRIM(title)) AS after_trim
+FROM Books
+WHERE book_id = 20;
