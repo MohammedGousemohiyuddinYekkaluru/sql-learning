@@ -29,3 +29,13 @@ SELECT
     LEN(TRIM(title)) AS after_trim
 FROM Books
 WHERE book_id = 20;
+
+/*
+Generate "Library Codes".
+For every book, take the first 3 letters of the Title and the last 3 letters of the Author.
+Combine them to make a Library_Code.
+*/
+
+SELECT
+    LEFT(TRIM(title), 3) + ' - ' + RIGHT(TRIM(author), 3) AS Library_Code
+FROM Books;
