@@ -39,3 +39,18 @@ Combine them to make a Library_Code.
 SELECT
     LEFT(TRIM(title), 3) + ' - ' + RIGHT(TRIM(author), 3) AS Library_Code
 FROM Books;
+
+/*
+Fix the formatting of our system files.
+Look at book ID 22 (clean_code_book).
+Use REPLACE to change all underscores (_) into regular spaces ( ).
+Also, change the word book to Manual.
+*/
+
+SELECT * FROM Books;
+
+SELECT
+    title,
+    REPLACE(title, '_', ' ') AS Clean_Title
+FROM Books
+WHERE book_id = 22;
