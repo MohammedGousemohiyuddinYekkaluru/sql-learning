@@ -51,7 +51,7 @@ SELECT * FROM Books;
 
 SELECT
     title,
-    REPLACE(title, '_', ' ') AS Clean_Title
+    REPLACE(REPLACE(title, '_', ' '), 'book', 'Manual') AS Clean_Title
 FROM Books
 WHERE book_id = 22;
 
