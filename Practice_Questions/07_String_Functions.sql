@@ -54,3 +54,14 @@ SELECT
     REPLACE(title, '_', ' ') AS Clean_Title
 FROM Books
 WHERE book_id = 22;
+
+/*
+Find a specific part of a title.
+For 'Harry Potter: Part 1' (ID 21), extract only the word 'Potter'.
+*/
+
+SELECT
+    title,
+    SUBSTRING(TRIM(title), 6, 7) AS specific_title
+FROM Books
+WHERE book_id = 21;
