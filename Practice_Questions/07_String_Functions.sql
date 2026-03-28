@@ -62,6 +62,6 @@ For 'Harry Potter: Part 1' (ID 21), extract only the word 'Potter'.
 
 SELECT
     title,
-    SUBSTRING(TRIM(title), 6, 7) AS specific_title
+    SUBSTRING(TRIM(title), 7, 6) AS specific_title
 FROM Books
 WHERE book_id = 21;
