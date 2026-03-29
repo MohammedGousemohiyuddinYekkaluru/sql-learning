@@ -87,3 +87,14 @@ SELECT
     SUBSTRING(TRIM(title), 1, 6) AS specific_title
 FROM Books
 WHERE book_id = 13;
+
+
+/*
+For 'Brave New World' (ID 15), extract only the word 'New World'.
+*/
+
+SELECT
+    title,
+    SUBSTRING(TRIM(title), 7, LEN(title)) AS specific_title
+FROM Books
+WHERE book_id = 15;
