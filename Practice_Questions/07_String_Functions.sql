@@ -65,8 +65,6 @@ FROM Books
 WHERE book_id = 21;
 
 
-select * from Books
-
 /*
 For '   THE GREAT GATSBY   ' (ID 20), extract only the word 'GATSBY'.
 */
@@ -98,3 +96,12 @@ SELECT
     SUBSTRING(TRIM(title), 7, LEN(title)) AS specific_title
 FROM Books
 WHERE book_id = 15;
+
+
+/*
+Create a "Book - Author" for every book.
+*/
+
+SELECT
+    CONCAT(TRIM(title), ' ', '-', ' ', TRIM(author)) AS Book_Author
+FROM Books;
