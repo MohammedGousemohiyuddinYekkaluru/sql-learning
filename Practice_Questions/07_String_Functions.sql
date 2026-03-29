@@ -47,8 +47,6 @@ Use REPLACE to change all underscores (_) into regular spaces ( ).
 Also, change the word book to Manual.
 */
 
-SELECT * FROM Books;
-
 SELECT
     title,
     REPLACE(REPLACE(title, '_', ' '), 'book', 'Manual') AS Clean_Title
