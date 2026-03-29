@@ -63,3 +63,16 @@ SELECT
     SUBSTRING(TRIM(title), 7, 6) AS specific_title
 FROM Books
 WHERE book_id = 21;
+
+
+select * from Books
+
+/*
+For '   THE GREAT GATSBY   ' (ID 20), extract only the word 'GATSBY'.
+*/
+
+SELECT
+    title,
+    SUBSTRING(TRIM(title), 11, LEN(title)) AS specific_title
+FROM Books
+WHERE book_id = 20;
