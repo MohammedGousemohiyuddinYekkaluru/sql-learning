@@ -76,3 +76,14 @@ SELECT
     SUBSTRING(TRIM(title), 11, LEN(title)) AS specific_title
 FROM Books
 WHERE book_id = 20;
+
+
+/*
+For 'Atomic Habits' (ID 13), extract only the word 'Atomic'.
+*/
+
+SELECT
+    title,
+    SUBSTRING(TRIM(title), 1, 6) AS specific_title
+FROM Books
+WHERE book_id = 13;
