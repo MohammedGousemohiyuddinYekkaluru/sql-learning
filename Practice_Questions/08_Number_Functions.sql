@@ -30,3 +30,13 @@ SELECT
 	title,
 	ROUND(Price, 0) AS Book_Price
 FROM Books;
+
+/*
+3) Our Discount_Amount was accidentally entered as a negative number (e.g., -5.50).
+Select the title and use ABS to show the Discount_Amount as a positive number.
+*/
+
+SELECT 
+	title,
+	ABS(Discount_Amount) AS Discount_Amount
+FROM Books;
