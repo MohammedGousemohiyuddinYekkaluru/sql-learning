@@ -6,3 +6,17 @@ ALTER TABLE Books ADD Discount_Amount DECIMAL(10, 2);
 UPDATE Books SET Price = 19.995, Discount_Amount = -5.50 WHERE book_id = 10;
 UPDATE Books SET Price = 14.444, Discount_Amount = -2.15 WHERE book_id = 11;
 UPDATE Books SET Price = 25.000, Discount_Amount = 0.00  WHERE book_id = 12;
+
+
+/*
+1) The accounting department wants a clean price list.
+Select the title and the Price from the Books table.
+Round the Price to exactly 2 decimal places.
+*/
+
+SELECT * FROM Books;
+
+SELECT 
+	title,
+	ROUND(Price, 2) AS Book_Price
+FROM Books;
