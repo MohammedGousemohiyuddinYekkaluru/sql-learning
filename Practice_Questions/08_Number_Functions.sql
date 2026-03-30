@@ -20,3 +20,13 @@ SELECT
 	title,
 	ROUND(Price, 2) AS Book_Price
 FROM Books;
+
+/*
+2) For a quick marketing flyer, we need "whole number" prices.
+Select the title and round the Price to 0 decimal places.
+*/
+
+SELECT
+	title,
+	ROUND(Price, 0) AS Book_Price
+FROM Books;
