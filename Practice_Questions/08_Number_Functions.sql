@@ -40,3 +40,17 @@ SELECT
 	title,
 	ABS(Discount_Amount) AS Discount_Amount
 FROM Books;
+
+/*
+4) In SQL Server, the ROUND function has a secret 3rd parameter. 
+If you put a non-zero number there, it truncates (cuts off) the number instead of rounding it.
+*/
+
+SELECT 
+	title,
+	ROUND(price, 2, 1) AS Price
+FROM Books;
+
+SELECT
+	3.516 AS Number,
+	ROUND(3.516, 2, 1);
