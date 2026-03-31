@@ -20,3 +20,13 @@ SELECT
 	YEAR(BorrowDate) AS Year,
 	DATENAME(MONTH, BorrowDate) AS Month
 FROM Books;
+
+/*
+2) Create a "Reader Friendly" date.
+Show the title and format the BorrowDate to look like this: "Wednesday, Jan 15, 2026".
+*/
+
+SELECT
+	title,
+	FORMAT(BorrowDate, 'dddd, MMM dd, yyyy') AS Date
+FROM Books;
