@@ -54,3 +54,13 @@ FROM Books;
 SELECT
 	3.516 AS Number,
 	ROUND(3.516, 2, 1);
+
+
+/*
+Calculate the "Final Price"
+*/
+
+SELECT
+	title,
+	ROUND(Price + ABS(Discount_Amount), 1) AS Final_Price
+FROM Books;
