@@ -62,5 +62,5 @@ Calculate the "Final Price"
 
 SELECT
 	title,
-	ROUND(Price + ABS(Discount_Amount), 1) AS Final_Price
+	ROUND(Price - ABS(Discount_Amount), 1) AS Final_Price
 FROM Books;
