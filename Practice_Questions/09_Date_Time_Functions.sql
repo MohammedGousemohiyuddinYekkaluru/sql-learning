@@ -9,3 +9,14 @@ UPDATE Books SET BorrowDate = '2026-03-01 16:20:00' WHERE book_id = 15;
 
 SELECT * FROM Books;
 
+
+/*
+1) Extract Monthly Report, Extract year as a number and Month Name.
+*/
+
+SELECT
+	title,
+	BorrowDate,
+	YEAR(BorrowDate) AS Year,
+	DATENAME(MONTH, BorrowDate) AS Month
+FROM Books;
