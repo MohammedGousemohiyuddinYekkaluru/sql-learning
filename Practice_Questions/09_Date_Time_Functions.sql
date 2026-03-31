@@ -1,0 +1,11 @@
+-- 1. Add a BorrowDate column
+ALTER TABLE Books ADD BorrowDate DATETIME;
+
+-- 2. Update some dates (using various formats SQL Server recognizes)
+UPDATE Books SET BorrowDate = '2026-01-15 10:30:00' WHERE book_id = 10;
+UPDATE Books SET BorrowDate = '2026-02-20 14:45:00' WHERE book_id = 11;
+UPDATE Books SET BorrowDate = '2025-12-05 09:00:00' WHERE book_id = 14;
+UPDATE Books SET BorrowDate = '2026-03-01 16:20:00' WHERE book_id = 15;
+
+SELECT * FROM Books;
+
