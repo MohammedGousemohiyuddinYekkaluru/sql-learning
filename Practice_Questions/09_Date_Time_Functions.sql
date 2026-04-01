@@ -50,7 +50,7 @@ Calculate the number of days between the BorrowDate and today's date.
 
 SELECT
 	title,
-	DATEDIFF(day, BorrowDate, GETDATE()) AS Books_Age
+	DATEDIFF(day, BorrowDate, GETDATE()) AS Days_borrowed
 FROM Books;
 
 /*
@@ -63,3 +63,14 @@ SELECT
 	title,
 	CAST(EOMONTH(BorrowDate) AS DATE) AS End_Of_Month
 FROM Books;
+
+/*
+6) List the title and a column called Days_Held. 
+Only show books that have been out for more than 40 days relative to today's date.
+*/
+
+SELECT
+	title,
+	DATEDIFF(day, BorrowDate, GETDATE()) AS Days_Held
+FROM Books
+WHERE DATEDIFF(day, BorrowDate, GETDATE()) > 40;
