@@ -42,3 +42,13 @@ SELECT
 	BorrowDate,
 	DATEADD(day, 14, BorrowDate) AS Due_Date
 FROM Books;
+
+/*
+4) How long has the book been out?
+Calculate the number of days between the BorrowDate and today's date.
+*/
+
+SELECT
+	title,
+	DATEDIFF(day, BorrowDate, GETDATE()) AS Books_Age
+FROM Books;
