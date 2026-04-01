@@ -30,3 +30,15 @@ SELECT
 	title,
 	FORMAT(BorrowDate, 'dddd, MMM dd, yyyy') AS Date
 FROM Books;
+
+/*
+3) Calculate the "Due Date".
+Books are due exactly 14 days after they are borrowed.
+Select the title, the BorrowDate, and calculate the DueDate.
+*/
+
+SELECT 
+	title,
+	BorrowDate,
+	DATEADD(day, 14, BorrowDate) AS Due_Date
+FROM Books;
