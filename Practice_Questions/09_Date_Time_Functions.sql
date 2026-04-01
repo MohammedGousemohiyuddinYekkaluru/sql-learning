@@ -52,3 +52,13 @@ SELECT
 	title,
 	DATEDIFF(day, BorrowDate, GETDATE()) AS Books_Age
 FROM Books;
+
+/*
+5) The library clears records at the end of the month.
+Show the title and the last day of the month in which the book was borrowed.
+*/
+
+SELECT
+	title,
+	EOMONTH(BorrowDate) AS End_Of_Month
+FROM Books;
