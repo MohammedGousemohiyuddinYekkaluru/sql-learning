@@ -56,9 +56,10 @@ FROM Books;
 /*
 5) The library clears records at the end of the month.
 Show the title and the last day of the month in which the book was borrowed.
+ALSO, CAST that result as a simple DATE so it doesn't show the 00:00:00 time.
 */
 
 SELECT
 	title,
-	EOMONTH(BorrowDate) AS End_Of_Month
+	CAST(EOMONTH(BorrowDate) AS DATE) AS End_Of_Month
 FROM Books;
