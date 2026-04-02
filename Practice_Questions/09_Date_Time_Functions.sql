@@ -87,3 +87,13 @@ FROM Books
 WHERE FORMAT(BorrowDate, 'dddd') = 'Friday'
 OR FORMAT(BorrowDate, 'dddd') = 'Saturday'
 OR FORMAT(BorrowDate, 'dddd') = 'Sunday';
+
+/*
+8) We need to standardize our display for an old legacy system that only accepts a specific format.
+Display the title and the BorrowDate formatted exactly as (e.g., 01/15/26).
+*/
+
+SELECT
+	title,
+	FORMAT(BorrowDate, 'MM/dd/yy') AS Borrow_Date
+FROM Books;
