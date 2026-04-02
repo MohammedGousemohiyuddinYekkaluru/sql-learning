@@ -109,3 +109,13 @@ SELECT
 	title,
 	FORMAT(DATEADD(MONTH, 6, BorrowDate), 'yyyy - MMMM') AS Review_Date
 FROM Books;
+
+/*
+10) The library pays a small "inventory tax" on the last day of the quarter in which a book was borrowed.
+For every borrowed book, find the EOMONTH of that date, but then add 2 months to it to find the end of that quarter.
+*/
+
+SELECT
+	title,
+	CAST(EOMONTH(DATEADD(MONTH, 2, BorrowDate)) AS Date) AS Quaterly_Date
+FROM Books;
