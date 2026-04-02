@@ -99,3 +99,13 @@ SELECT
 	FORMAT(BorrowDate, 'MM/dd/yy') AS Borrow_Date,
 	FORMAT(BorrowDate, 'HH') AS CheckoutHour
 FROM Books;
+
+/*
+9) For every book, calculate a date exactly 6 months after the BorrowDate. Call this column Review_Date.
+The Review_Date must be displayed as a Year and Month string only (e.g., "2026 - July").
+*/
+
+SELECT
+	title,
+	FORMAT(DATEADD(MONTH, 6, BorrowDate), 'yyyy - MMMM') AS Review_Date
+FROM Books;
