@@ -74,3 +74,16 @@ SELECT
 	DATEDIFF(day, BorrowDate, GETDATE()) AS Days_Held
 FROM Books
 WHERE DATEDIFF(day, BorrowDate, GETDATE()) > 40;
+
+/*
+7) Management noticed that books borrowed on weekends are rarely returned on time.
+List the title and the Name of the Weekday (e.g.,'Friday', 'Saturday', 'Sunday') that the book was borrowed.
+*/
+
+SELECT
+	title,
+	FORMAT(BorrowDate, 'dddd') AS Weekday
+FROM Books
+WHERE FORMAT(BorrowDate, 'dddd') = 'Friday'
+OR FORMAT(BorrowDate, 'dddd') = 'Saturday'
+OR FORMAT(BorrowDate, 'dddd') = 'Sunday';
