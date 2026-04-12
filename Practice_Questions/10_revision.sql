@@ -32,3 +32,15 @@ SELECT
 	CONCAT(UPPER(product_name), ' ', '-', ' ', LOWER(category)) AS Product_Label,
 	ROUND(price, 0)
 FROM Products;
+
+/*
+It’s time for the monthly audit.
+Show the sale_id and the sale_date.
+Column 1: Calculate a Return_Deadline which is exactly 30 days after the sale_date.
+*/
+
+SELECT 
+	sale_id,
+	sale_date,
+	DATEADD(day, 30, sale_date) AS Return_Deadline
+FROM Sales;
