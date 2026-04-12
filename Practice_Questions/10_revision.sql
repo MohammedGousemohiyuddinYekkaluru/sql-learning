@@ -12,3 +12,12 @@ INNER JOIN Sales AS s
 ON p.product_id = s.product_id
 WHERE P.category = 'Accessories';
 
+/*
+Marketing wants to see which products have never been sold.
+*/
+
+SELECT *
+FROM Products AS p
+LEFT JOIN Sales AS s
+ON P.product_id = S.product_id
+WHERE s.sale_id IS NULL;
