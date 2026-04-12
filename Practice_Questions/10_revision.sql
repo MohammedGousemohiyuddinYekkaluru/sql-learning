@@ -21,3 +21,14 @@ FROM Products AS p
 LEFT JOIN Sales AS s
 ON P.product_id = S.product_id
 WHERE s.sale_id IS NULL;
+
+/*
+We need a clean inventory report for the website.
+1.  A new column called Product_Label that combines the product_name in UPPERCASE and the category in lowercase.
+2.  The price rounded to the nearest whole number.
+*/
+
+SELECT 
+	CONCAT(UPPER(product_name), ' ', '-', ' ', LOWER(category)) AS Product_Label,
+	ROUND(price, 0)
+FROM Products;
