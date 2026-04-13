@@ -48,3 +48,15 @@ SELECT
 	DATENAME(weekday, sale_date) AS Order_Day
 FROM Sales
 WHERE MONTH(sale_date) = 01 ;
+
+/*
+You need a single list of all 'Locations' related to the company.
+*/
+
+SELECT
+	category
+FROM Products;
+
+SELECT 
+	store_location
+FROM Sales;
