@@ -55,7 +55,7 @@ Combine the category from the Products table and the store_location from the Sal
 Ensure there are no duplicates.
 */
 
-SELECT DISTINCT
+SELECT
 	CONCAT(p.category, ' ', '-', ' ', s.store_location) AS All_Locations
 FROM Products AS p
 LEFT JOIN Sales AS s
@@ -63,8 +63,18 @@ ON p.product_id = s.product_id
 
 UNION
 
-SELECT DISTINCT
+SELECT
 	CONCAT(p.category, ' ', '-', ' ', s.store_location)
 FROM Sales AS s
 RIGHT JOIN Products AS p
 ON p.product_id = s.product_id;
+
+-- ANOTHER METHOD (easy way)
+
+SELECT category AS All_Locations 
+FROM Products
+
+UNION
+
+SELECT store_location 
+FROM Sales;
