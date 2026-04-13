@@ -38,6 +38,7 @@ It’s time for the monthly audit.
 Show the sale_id and the sale_date.
 Column 1: Calculate a Return_Deadline which is exactly 30 days after the sale_date.
 Column 2: Extract the Name of the Day (e.g., 'Monday') the sale happened.
+Only show sales that happened in the month of January.
 */
 
 SELECT 
@@ -45,4 +46,5 @@ SELECT
 	sale_date,
 	DATEADD(day, 30, sale_date) AS Return_Deadline,
 	DATENAME(weekday, sale_date) AS Order_Day
-FROM Sales;
+FROM Sales
+WHERE MONTH(sale_date) = 01 ;
