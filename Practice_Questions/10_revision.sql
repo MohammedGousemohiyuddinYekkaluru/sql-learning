@@ -51,12 +51,19 @@ WHERE MONTH(sale_date) = 01 ;
 
 /*
 You need a single list of all 'Locations' related to the company.
+Combine the category from the Products table and the store_location from the Sales table into one single column called All_Locations.
 */
 
 SELECT
-	category
-FROM Products;
+	CONCAT(p.category, ' ', '-', ' ', s.store_location) AS All_Locations
+FROM Products AS p
+LEFT JOIN Sales AS s
+ON p.product_id = s.product_id
+
+UNION
 
 SELECT 
-	store_location
-FROM Sales;
+	CONCAT(p.category, ' ', '-', ' ', s.store_location)
+FROM Sales AS s
+RIGHT JOIN Products AS p
+ON p.product_id = s.product_id;
