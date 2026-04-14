@@ -91,3 +91,11 @@ FROM Products
 WHERE stock_quantity BETWEEN 1 AND 20
 ORDER BY stock_quantity ASC;
 
+/*
+7) The Sales Nickname
+Show a unique list of store_location from the Sales table, but transform the names so they are all in Lower Case and call the column Market.
+*/
+
+SELECT DISTINCT
+	LOWER(store_location) Market
+FROM Sales;
