@@ -117,3 +117,15 @@ Calculate the difference between the most expensive product and the cheapest pro
 SELECT
 	MAX(price) - MIN(price) Price_Spread
 FROM Products;
+
+/*
+10) The Category Count
+Which categories have more than 2 products? Show the category and the count of products, but only for those with a count greater than 2.
+*/
+
+SELECT
+	category,
+	COUNT(category) Count_Of_Products
+FROM Products
+GROUP BY category
+HAVING COUNT(category) > 2;
