@@ -99,3 +99,12 @@ Show a unique list of store_location from the Sales table, but transform the nam
 SELECT DISTINCT
 	LOWER(store_location) Market
 FROM Sales;
+
+/*
+8) The Monday Blues
+Write a query that shows only the sales that occurred on a Thursday.
+*/
+
+SELECT *
+FROM Sales
+WHERE DATENAME(weekday, sale_date) = 'Thursday';
