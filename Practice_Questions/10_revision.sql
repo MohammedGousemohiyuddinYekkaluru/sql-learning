@@ -108,3 +108,12 @@ Write a query that shows only the sales that occurred on a Thursday.
 SELECT *
 FROM Sales
 WHERE DATENAME(weekday, sale_date) = 'Thursday';
+
+/*
+9) The Value Gap
+Calculate the difference between the most expensive product and the cheapest product in the Products table. Call the result Price_Spread.
+*/
+
+SELECT
+	MAX(price) - MIN(price) Price_Spread
+FROM Products;
