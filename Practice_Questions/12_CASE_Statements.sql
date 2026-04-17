@@ -42,3 +42,18 @@ SELECT
 		ELSE 'Other'
 	END Region_ShortCode
 FROM Sales;
+
+/*
+Task - 3: High-Value Bonus
+calculate:
+The total number of sales
+The number of "Big Sales"(10+ quantity)
+*/
+
+SELECT 
+	store_location,
+	COUNT(quantity_sold) Total_sales,
+	SUM(CASE WHEN quantity_sold >= 10 THEN 1 ELSE 0 END) Big_sales
+FROM Sales
+GROUP BY store_location;
+
