@@ -2,13 +2,13 @@ select * from Products
 select * from Sales
 
 /*
-Task - 1. The Stock Alert (Categorization)
+Task - 1: The Stock Alert (Categorization)
 We need a report that labels our inventory risk.
-Task: Show the product_name and stock_quantity.
+Show the product_name and stock_quantity.
 If stock_quantity is 0, label it 'Out of Stock'.
 If stock_quantity is between 1 and 20, label it 'Low Stock'.
 Otherwise, label it 'Healthy'.
-Alias: Name this new column Inventory_Status.
+Name this new column Inventory_Status.
 */
 
 SELECT
@@ -20,3 +20,25 @@ SELECT
 		ELSE 'Healthy'
 	END Inventory_Status
 FROM Products;
+
+/*
+Task - 2: The Region Shortcode (Mapping)
+Management wants to simplify the store location names for a mobile app.
+Show the sale_id and the store_location.
+Use the Quick Form (Simple Case) to map:
+'New York' to 'NY'
+'London' to 'UK'
+'Paris' to 'FR'
+Everything else to 'Other'.
+*/
+
+SELECT
+	sale_id,
+	store_location,
+	CASE store_location
+		WHEN 'New York' THEN 'NY'
+		WHEN 'London' THEN 'UK'
+		WHEN 'Paris' THEN 'FR'
+		ELSE 'Other'
+	END Region_ShortCode
+FROM Sales;
