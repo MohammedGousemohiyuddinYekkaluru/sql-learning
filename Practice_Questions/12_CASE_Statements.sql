@@ -75,3 +75,19 @@ FROM Products AS p
 LEFT JOIN Sales AS s
 ON p.product_id = s.product_id;
 
+
+/*
+Task - 5: The 'Ghost' Stock Report (Handling NULLs)
+Sometimes we want to compare our Products to what actually sold, but not every product has a sale record.
+*/
+
+SELECT 
+	p.product_name,
+	CASE
+		WHEN s.sale_id IS NULL THEN 'No Sales Yet'
+		WHEN s.quantity_sold >= 10 THEN 'Top Seller'
+		ELSE 'Standard Seller'
+	END Sales_Status
+FROM Products AS p
+LEFT JOIN Sales AS s
+ON p.product_id = s.product_id;
