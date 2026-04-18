@@ -57,3 +57,21 @@ SELECT
 FROM Sales
 GROUP BY store_location;
 
+/*
+Task - 4: The 'Profit Margin' Tiers.
+Management wants to know which sales were actually profitable after accounting for a flat $50 shipping fee per order.
+*/
+
+SELECT 
+	p.product_name,
+	s.quantity_sold,
+	(p.price * s.quantity_sold) - 50 AS Total_Revenue,
+	CASE
+		WHEN (p.price * s.quantity_sold) - 50 > 500 THEN 'High Profit'
+		WHEN (p.price * s.quantity_sold) - 50 BETWEEN 0 AND 500 THEN 'General Profit'
+		ELSE 'Loss'
+	END Profit_Tier
+FROM Products AS p
+LEFT JOIN Sales AS s
+ON p.product_id = s.product_id;
+
