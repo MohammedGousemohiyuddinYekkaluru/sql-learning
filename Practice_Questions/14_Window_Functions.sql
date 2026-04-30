@@ -14,3 +14,17 @@ SELECT
 	quantity_sold,
 	SUM(quantity_sold) OVER () Grand_Total_Sold
 FROM Sales;
+
+
+/*
+Task 2: The "Store Performance"
+Now, they want to compare each sale to the total sales of that specific store.
+Show: sale_id, store_location, quantity_sold, and a new column Store_Total_Sold.
+*/
+
+SELECT
+	sale_id,
+	store_location,
+	quantity_sold,
+	SUM(quantity_sold) OVER (PARTITION BY store_location) Store_Total_Sold
+FROM Sales;
