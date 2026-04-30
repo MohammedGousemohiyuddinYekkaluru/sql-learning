@@ -28,3 +28,17 @@ SELECT
 	quantity_sold,
 	SUM(quantity_sold) OVER (PARTITION BY store_location) Store_Total_Sold
 FROM Sales;
+
+
+/*
+Task 3: The "Running Total"
+Management wants to see how sales grew over time.
+Show: sale_date, quantity_sold, and Running_Total.
+order by sale_date & show the sum growing row by row.
+*/
+
+SELECT 
+	sale_date,
+	quantity_sold,
+	SUM(quantity_sold) OVER (ORDER BY sale_date ROWS UNBOUNDED PRECEDING) Running_Total
+FROM Sales;
