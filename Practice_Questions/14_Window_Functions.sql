@@ -48,12 +48,14 @@ FROM Sales;
 Management wants to see a "Leaderboard" of sales.
 Table: Sales joined with Products.
 Columns to show: sale_date, product_name, quantity_sold.
+New Column 1: Store_Rank — Rank the sales within each store based on quantity_sold (highest quantity = Rank 1).
 */
 
 SELECT
 	s.sale_date,
 	p.product_name,
-	s.quantity_sold
+	s.quantity_sold,
+	RANK() OVER (PARTITION BY s.store_location ORDER BY s.quantity_sold) Store_Rank
 FROM Sales as s
 LEFT JOIN Products as p
 ON s.product_id = p.product_id;
