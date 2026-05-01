@@ -42,3 +42,18 @@ SELECT
 	quantity_sold,
 	SUM(quantity_sold) OVER (ORDER BY sale_date ROWS UNBOUNDED PRECEDING) Running_Total
 FROM Sales;
+
+
+/*
+Management wants to see a "Leaderboard" of sales.
+Table: Sales joined with Products.
+Columns to show: sale_date, product_name, quantity_sold.
+*/
+
+SELECT
+	s.sale_date,
+	p.product_name,
+	s.quantity_sold
+FROM Sales as s
+LEFT JOIN Products as p
+ON s.product_id = p.product_id;
