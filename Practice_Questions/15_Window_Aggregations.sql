@@ -16,3 +16,21 @@ SELECT
 	ROUND(CAST(quantity_sold AS FLOAT) / SUM(quantity_sold) OVER(PARTITION BY store_location) * 100, 2) Percent_Of_Store
 FROM Sales;
 
+
+/*
+Task 2: The "Above Average" Filter
+We need to find individual sales that performed better than the company-wide average.
+Goal: Return all columns from the Sales table, but only for rows where the quantity_sold is higher than the average quantity_sold of the entire table.
+*/
+
+SELECT
+	*
+FROM (
+	SELECT
+		*,
+		AVG(quantity_sold) OVER () avg_QuantitySold
+	FROM Sales
+)t
+WHERE quantity_sold > avg_QuantitySold;
+
+
