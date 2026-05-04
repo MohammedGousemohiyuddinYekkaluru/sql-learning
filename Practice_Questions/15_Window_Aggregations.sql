@@ -34,3 +34,15 @@ FROM (
 WHERE quantity_sold > avg_QuantitySold;
 
 
+/*
+Task 3: The "Price Deviation"
+How much does each product's price vary from the cheapest product in the whole catalog?
+Goal: Show product_name and price.
+The Calculation: A column called Difference_From_Cheapest.
+*/
+
+SELECT
+	product_name,
+	price,
+	price - MIN(price) OVER () Difference_From_Cheapest
+FROM Products;
