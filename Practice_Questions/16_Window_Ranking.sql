@@ -1,3 +1,5 @@
+
+SELECT * FROM Products
 /*
 Task 1: The "Tie-Breaker" Challenge
 We have several sales in our data. Let's see how different functions handle them.
@@ -14,3 +16,17 @@ SELECT
 	Rank() OVER(ORDER BY quantity_sold DESC) Olympic_Rank,
 	DENSE_RANK() OVER(ORDER BY quantity_sold DESC) Dense_Rank
 FROM Sales;
+
+
+/*
+Task 2: De-Duplication (The "Pro" Move)
+Imagine a bug caused the same product to be entered into the Products table twice.
+*/
+
+SELECT *
+FROM
+(SELECT
+	*,
+	ROW_NUMBER() OVER (PARTITION BY product_name ORDER BY stock_quantity DESC) Row_number
+FROM Products)t
+WHERE Row_number = 1;
