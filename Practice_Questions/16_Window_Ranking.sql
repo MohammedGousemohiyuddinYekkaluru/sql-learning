@@ -19,7 +19,7 @@ FROM Sales;
 
 
 /*
-Task 2: De-Duplication (The "Pro" Move)
+Task 2: De-Duplication
 Imagine a bug caused the same product to be entered into the Products table twice.
 */
 
@@ -30,3 +30,21 @@ FROM
 	ROW_NUMBER() OVER (PARTITION BY product_name ORDER BY stock_quantity DESC) Row_number
 FROM Products)t
 WHERE Row_number = 1;
+
+
+/*
+Task 3: The "Elite 50%"
+Goal: Identify products that are in the top 50% of our price list.
+Show: product_name, price, and a column called Price_Percentile.
+Filter: Only show products where the Price_Percentile is less than or equal to 50%.
+*/
+
+SELECT
+	*
+FROM
+(SELECT
+	product_name,
+	price,
+	ROUND(CUME_DIST() OVER(ORDER BY price DESC), 2) Price_Percentile
+FROM Products)t
+WHERE Price_Percentile <= 0.5;
