@@ -25,3 +25,24 @@ SELECT
 	product_id,
 	FIRST_VALUE(product_id) OVER(PARTITION BY store_location ORDER BY sale_date) First_Product_Sold
 FROM Sales;
+
+/*
+Task 3: The Price Gap
+How much more expensive is the current product compared to the cheapest product we offer?
+*/
+
+SELECT
+	product_name,
+	price,
+	FIRST_VALUE(price) OVER(ORDER BY price) Cheapest_price,
+	price - FIRST_VALUE(price) OVER(ORDER BY price) Diff_From_Cheapest
+FROM Products;
+
+-- another way
+
+SELECT
+	product_name,
+	price,
+	MIN(price) OVER(ORDER BY price) Cheapest_price,
+	price - MIN(price) OVER(ORDER BY price) Diff_From_Cheapest
+FROM Products;
